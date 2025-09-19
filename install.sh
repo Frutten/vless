@@ -119,7 +119,6 @@ if command -v ufw &> /dev/null && sudo ufw status | grep -q 'Status: active'; th
     sudo ufw allow 443/tcp
     sudo ufw allow 1488/tcp
     sudo ufw allow 8443/tcp
-    sudo ufw allow 4443/tcp
 fi
 
 if [ -d "/etc/letsencrypt/live/$DOMAIN" ]; then
@@ -132,7 +131,7 @@ fi
 
 echo -e "\n${CYAN}Шаг 4: Настройка Nginx...${NC}"
 read_input "Какой порт вы будете использовать для вебхуков YooKassa? (443 или 8443, рекомендуется 443): " YOOKASSA_PORT_INPUT
-YOOKASSA_PORT=${YOOKASSA_PORT_INPUT:-4443}
+YOOKASSA_PORT=${YOOKASSA_PORT_INPUT:-8443}
 
 NGINX_ENABLED_FILE="/etc/nginx/sites-enabled/${PROJECT_DIR}.conf"
 
